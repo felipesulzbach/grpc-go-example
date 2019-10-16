@@ -5,7 +5,7 @@ Project created in course [gRPC [Golang] Master Class: Build Modern API & Micros
 ___
 
 ## About Golang
-![](https://github.com/felipesulzbach/grpc-go-example/blob/master/things/go-grpc.png)
+![](https://raw.githubusercontent.com/felipesulzbach/grpc-go-example/master/things/go-grpc.png)
 
 ### What is?
 
@@ -54,7 +54,7 @@ GoLang intentionally leaves out many features of modern *OOP* languages. Everyth
 
 
 ### GOPATH structure
-![](https://github.com/felipesulzbach/grpc-go-example/blob/master/things/default-estructure-go.png)
+![](https://raw.githubusercontent.com/felipesulzbach/grpc-go-example/master/things/default-estructure-go.png)
 
 - BIN: Contains executable commands;
 - PKG: Contains compiled files from some libraries.
