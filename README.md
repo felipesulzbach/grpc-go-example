@@ -5,7 +5,8 @@ Project created in course [gRPC [Golang] Master Class: Build Modern API & Micros
 ___
 
 ## About Golang
-![](https://raw.githubusercontent.com/felipesulzbach/grpc-go-example/master/things/go-grpc.png)
+![](https://raw.githubusercontent.com/felipesulzbach/grpc-go-example/master/things/go.png)
+
 
 ### What is?
 
@@ -22,6 +23,7 @@ The Go language was created with the goal of having **C** language performance b
 
 GoLang intentionally leaves out many features of modern *OOP* languages. Everything is divided into packages. [Google](https://about.google/intl/en_US/) technology has only *structs* instead of *classes*.
 
+
 ### Some companies that have adopted Golang:
 - Netflix
 - The Economist
@@ -33,6 +35,14 @@ GoLang intentionally leaves out many features of modern *OOP* languages. Everyth
 - OpenShift
 - Twitter
 - [Complete list by country (link here)](https://github.com/golang/go/wiki/GoUsers)
+
+
+## About gRPC
+![](https://raw.githubusercontent.com/felipesulzbach/grpc-go-example/master/things/grpc.png)
+
+
+### What is?
+Bla bla bla...
 
 
 ## About this project
