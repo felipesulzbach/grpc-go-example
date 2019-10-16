@@ -52,8 +52,13 @@ GoLang intentionally leaves out many features of modern *OOP* languages. Everyth
 **GOPATH** - Add the path where the work path will be.
 - By default, the path is *C:\Users\user\go\bin*.
 
-## Gopath structure
+
+### GOPATH structure
 ![](https://github.com/felipesulzbach/grpc-go-example/blob/master/things/default-estructure-go.png)
+
+- BIN: Contains executable commands;
+- PKG: Contains compiled files from some libraries.
+- SRC:  Contains Go source files, and the created projects;
 
 
 ### Preparing the environment
