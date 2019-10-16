@@ -5,6 +5,7 @@ Project created in course [gRPC [Golang] Master Class: Build Modern API & Micros
 ___
 
 ## About Golang
+![](https://github.com/felipesulzbach/grpc-go-example/blob/master/things/go-grpc.png)
 
 ### What is?
 
@@ -50,6 +51,9 @@ GoLang intentionally leaves out many features of modern *OOP* languages. Everyth
 
 **GOPATH** - Add the path where the work path will be.
 - By default, the path is *C:\Users\user\go\bin*.
+
+## Gopath structure
+![](https://github.com/felipesulzbach/grpc-go-example/blob/master/things/default-estructure-go.png)
 
 
 ### Preparing the environment
