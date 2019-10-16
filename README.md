@@ -44,6 +44,17 @@ GoLang intentionally leaves out many features of modern *OOP* languages. Everyth
 ### What is?
 Bla bla bla...
 
+### gRPC vs REST
+| GRPC                                                                           | REST                                                                          |
+|--------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
+| Protocol Buffers - smaller, faster                                             | JSON - text based, slower, bigger                                             |
+| HTTP/2 (lower latency) - from 2015                                             | HTTP1.1 (higher latency) - from 1997                                          |
+| Bidirectional & Async                                                          | Client => Server request only                                                 |
+| Stream Support                                                                 | Request / Response support only                                               |
+| API Oriented - "What" (no constraints - free design)                           | CRUD Oriented (Create - Retrieve - Update - Delete / POST GET PUT DELETE)     |
+| Code Generation through Protocol Buffers in any language - first class citizen | Code generation through OpenAPI / Swagger (add-on) - second class citizen     |
+| RPC Based - gRPC does the plumbing for us                                      | HTTP verbs based - we have to write the plumbing or use a third party library |
+
 
 ## About this project
 
