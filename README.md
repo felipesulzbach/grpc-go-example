@@ -1,6 +1,6 @@
 # GRPC GoLang Example
 
-Project created in course [gRPC [Golang] Master Class: Build Modern API & Microservices](https://www.udemy.com/course/grpc-golang/).
+Project created from the [Udemy](https://www.udemy.com/) course, [GRPC [Golang] Master Class: Build Modern API & Microservices](https://www.udemy.com/course/grpc-golang/).
 
 ___
 
@@ -37,7 +37,7 @@ The Go language was created with the goal of having **C** language performance b
 - [Complete list by country (link here)](https://github.com/golang/go/wiki/GoUsers)
 
 
-## About gRPC
+## About GRPC
 ![](https://raw.githubusercontent.com/felipesulzbach/grpc-go-example/master/things/grpc.png)
 
 
@@ -53,7 +53,7 @@ The Go language was created with the goal of having **C** language performance b
 &nbsp;&nbsp;&nbsp;&nbsp;GRPC was created by [Google](https://about.google/intl/en_US/) for the purpose of connecting microservices to their data centers. In addition to being able to apply it to communication between microservices, it can also be applied to connect mobile applications and browsers to backend services.
 
 
-### GRPC vs REST
+### GRPC vs REST (by [Stephane Maarek](https://www.udemy.com/user/stephane-maarek/))
 | GRPC                                                                           | REST                                                                          |
 |--------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
 | Protocol Buffers - smaller, faster                                             | JSON - text based, slower, bigger                                             |
@@ -62,7 +62,7 @@ The Go language was created with the goal of having **C** language performance b
 | Stream Support                                                                 | Request / Response support only                                               |
 | API Oriented - no constraints, free design                                     | CRUD Oriented (Create - Retrieve - Update - Delete / POST GET PUT DELETE)     |
 | Code Generation through Protocol Buffers in any language - first class citizen | Code generation through OpenAPI / Swagger (add-on) - second class citizen     |
-| RPC Based - gRPC does the plumbing for us                                      | HTTP verbs based - we have to write the plumbing or use a third party library |
+| RPC Based - GRPC does the plumbing for us                                      | HTTP verbs based - we have to write the plumbing or use a third party library |
 
 
 ## About this project
@@ -95,7 +95,7 @@ The Go language was created with the goal of having **C** language performance b
 
 &nbsp;&nbsp;&nbsp;&nbsp;The following technologies are critical for running/compiling application sources.
 
-Install the [gRPC](https://github.com/grpc/grpc-go):
+Install the [GRPC](https://github.com/grpc/grpc-go):
 > go get -u google.golang.org/grpc
 
 Install the [Protobuf](https://github.com/golang/protobuf):
