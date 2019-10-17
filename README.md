@@ -10,7 +10,7 @@ ___
 
 ### What is?
 
-Golang, or simply Go, is an open source language created in 2009 by [Google](https://about.google/intl/en_US/) (by engineers [Rob Pike](https://en.wikipedia.org/wiki/Rob_Pike) and [Ken Thompson](https://en.wikipedia.org/wiki/Ken_Thompson)).
+&nbsp;&nbsp;&nbsp;&nbsp;Golang, or simply Go, is an open source language created in 2009 by [Google](https://about.google/intl/en_US/) (by engineers [Rob Pike](https://en.wikipedia.org/wiki/Rob_Pike) and [Ken Thompson](https://en.wikipedia.org/wiki/Ken_Thompson)).
 The Go language was created with the goal of having **C** language performance but also focusing more readable and easier to program like **Java** language.
 
 
@@ -21,7 +21,7 @@ The Go language was created with the goal of having **C** language performance b
 - Has garbage collector (has been incorporated into its core in order to prioritize performance);
 - It is strongly typed.
 
-GoLang intentionally leaves out many features of modern *OOP* languages. Everything is divided into packages. [Google](https://about.google/intl/en_US/) technology has only *structs* instead of *classes*.
+&nbsp;&nbsp;&nbsp;&nbsp;GoLang intentionally leaves out many features of modern *OOP* languages. Everything is divided into packages. [Google](https://about.google/intl/en_US/) technology has only *structs* instead of *classes*.
 
 
 ### Some companies that have adopted Golang:
@@ -42,16 +42,25 @@ GoLang intentionally leaves out many features of modern *OOP* languages. Everyth
 
 
 ### What is?
-Bla bla bla...
 
-### gRPC vs REST
+&nbsp;&nbsp;&nbsp;&nbsp;GRPC is a Remote Call Procedures (RPC) framework, a service that handles Remote Call Procedures (RPC) calls. It was developed by the company [Google](https://about.google/intl/en_US/) and was made available for free and open source.
+
+&nbsp;&nbsp;&nbsp;&nbsp;GRPC supports the [Protobuf protocol](https://developers.google.com/protocol-buffers/) by default, making inter-service communication even more efficient. It also supports [HTTP2](https://en.wikipedia.org/wiki/HTTP/2) and [QUIC](https://en.wikipedia.org/wiki/QUIC) communication. But you can also use other messaging protocols such as [JSON](http://www.json.org/) and [XML](https://en.wikipedia.org/wiki/XML).
+
+
+### What is it for?
+
+&nbsp;&nbsp;&nbsp;&nbsp;GRPC was created by [Google](https://about.google/intl/en_US/) for the purpose of connecting microservices to their data centers. In addition to being able to apply it to communication between microservices, it can also be applied to connect mobile applications and browsers to backend services.
+
+
+### GRPC vs REST
 | GRPC                                                                           | REST                                                                          |
 |--------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
 | Protocol Buffers - smaller, faster                                             | JSON - text based, slower, bigger                                             |
 | HTTP/2 (lower latency) - from 2015                                             | HTTP1.1 (higher latency) - from 1997                                          |
-| Bidirectional & Async                                                          | Client => Server request only                                                 |
+| Bidirectional and Async                                                        | Client => Server request only                                                 |
 | Stream Support                                                                 | Request / Response support only                                               |
-| API Oriented - "What" (no constraints - free design)                           | CRUD Oriented (Create - Retrieve - Update - Delete / POST GET PUT DELETE)     |
+| API Oriented - no constraints, free design                                     | CRUD Oriented (Create - Retrieve - Update - Delete / POST GET PUT DELETE)     |
 | Code Generation through Protocol Buffers in any language - first class citizen | Code generation through OpenAPI / Swagger (add-on) - second class citizen     |
 | RPC Based - gRPC does the plumbing for us                                      | HTTP verbs based - we have to write the plumbing or use a third party library |
 
@@ -84,7 +93,7 @@ Bla bla bla...
 
 ### Preparing the environment
 
-The following technologies are critical for running/compiling application sources.
+&nbsp;&nbsp;&nbsp;&nbsp;The following technologies are critical for running/compiling application sources.
 
 Install the [gRPC](https://github.com/grpc/grpc-go):
 > go get -u google.golang.org/grpc
