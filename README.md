@@ -11,7 +11,7 @@ ___
 ### What is?
 
 &nbsp;&nbsp;&nbsp;&nbsp;Golang, or simply Go, is an open source language created in 2009 by [Google](https://about.google/intl/en_US/) (by engineers [Rob Pike](https://en.wikipedia.org/wiki/Rob_Pike) and [Ken Thompson](https://en.wikipedia.org/wiki/Ken_Thompson)).
-The Go language was created with the goal of having **C** language performance but also focusing more readable and easier to program like **Java** language.
+The Go language was created with the goal of having **C** language performance but also focusing more readable and easier to program from more robust languages like **Java**.
 
 
 ### Some advantages of language
@@ -79,7 +79,7 @@ The Go language was created with the goal of having **C** language performance b
 **GOROOT** - Add Golang installation path.
 - By default, the path is *C:\Go\bin*.
 
-**GOPATH** - Add the path where the work path will be.
+**GOPATH** - Add the path where the workspace path will be.
 - By default, the path is *C:\Users\user\go\bin*.
 
 
