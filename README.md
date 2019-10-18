@@ -77,10 +77,10 @@ The Go language was created with the goal of having **C** language performance b
 ### Setting environment variables for Golang
 
 **GOROOT** - Add Golang installation path.
-- By default, the path is *C:\Go\bin*.
+- By default, the path is `C:\Go\bin`.
 
 **GOPATH** - Add the path where the workspace path will be.
-- By default, the path is *C:\Users\user\go\bin*.
+- By default, the path is `C:\Users\user\go\bin`.
 
 
 ### GOPATH structure
@@ -93,10 +93,13 @@ The Go language was created with the goal of having **C** language performance b
 
 ### Preparing the environment
 
-&nbsp;&nbsp;&nbsp;&nbsp;The following technologies are critical for running/compiling application sources.
+&nbsp;&nbsp;&nbsp;&nbsp;The following technologies are critical for running/compiling application sources:
 
-Install the [GRPC](https://github.com/grpc/grpc-go):
-> go get -u google.golang.org/grpc
-
-Install the [Protobuf](https://github.com/golang/protobuf):
-> go get -d -u github.com/golang/protobuf/protoc-gen-go
+- Download the Protoc installation [link here](https://github.com/protocolbuffers/protobuf/releases), for `*.proto` files compilations and follow these steps (Example: https://github.com/google/protobuf/releases/download/v3.5.1/protoc-3.10.0-win64.zip):
+  - Extract all to `C:\proto3`;
+  - Add the **PROTOCROOT** environment variable with the value `C:\proto3\bin`.
+- Access the application folder from the terminal and execute:
+  - Install the [GRPC](https://github.com/grpc/grpc-go):
+    > go get -u google.golang.org/grpc
+  - Install the [Protobuf](https://github.com/golang/protobuf):
+    > go get -d -u github.com/golang/protobuf/protoc-gen-go
