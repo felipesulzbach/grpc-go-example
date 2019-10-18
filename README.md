@@ -95,11 +95,11 @@ The Go language was created with the goal of having **C** language performance b
 
 &nbsp;&nbsp;&nbsp;&nbsp;The following technologies are critical for running/compiling application sources:
 
-- Download the Protoc installation [link here](https://github.com/protocolbuffers/protobuf/releases), for `*.proto` files compilations and follow these steps (Example: https://github.com/google/protobuf/releases/download/v3.5.1/protoc-3.10.0-win64.zip):
+- Download the Protoc installation [link here](https://github.com/protocolbuffers/protobuf/releases), for `*.proto` files compilations and follow these steps (Example: https://github.com/google/protobuf/releases/download/v3.10.0/protoc-3.10.0-win64.zip):
   - Extract all to `C:\proto3`;
   - Add the **PROTOCROOT** environment variable with the value `C:\proto3\bin`.
 - Access the application folder from the terminal and execute:
   - Install the [GRPC](https://github.com/grpc/grpc-go):
     > go get -u google.golang.org/grpc
   - Install the [Protobuf](https://github.com/golang/protobuf):
-    > go get -d -u github.com/golang/protobuf/protoc-gen-go
+    > go get -u github.com/golang/protobuf/protoc-gen-go
