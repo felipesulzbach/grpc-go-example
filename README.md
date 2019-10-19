@@ -78,12 +78,20 @@ The Go language was created with the goal of having **C** language performance b
 
 &nbsp;&nbsp;&nbsp;&nbsp;In the Golang installation, the required environment variables are added. The variables and paths are as follows:
 
+**IMPORTANT:** *If you chose to clone the project in another directory structure, you will need to adjust `imports` to resolve the errors.*
+
 **GOROOT** - Golang installation path.
 - By default, the path is `C:\Go\bin`.
 
 **GOPATH** - The path where the workspace path will be.
 - By default, the path is `%USERPROFILE%\go`.
-**NOTE:** *In Golang installation, the `go` directory is not created by default, only referenced in environment variables. Therefore, create the `go` directory in `%USERPROFILE%` if it does not exist. (Example: The directory should look like: `C:\Users\Felipe\go`.)*
+
+  **NOTE:** *In Golang installation, the `go` directory is not created by default, only referenced in environment variables. Therefore, create the `go` directory in `%USERPROFILE%` if it does not exist. (Example: The directory should look like: `C:\Users\Felipe\go`.)*
+
+
+### Clone project
+
+&nbsp;&nbsp;&nbsp;&nbsp;To maintain project package imports, the project must be cloned into the `go` subdirectory. It will be `%USERPROFILE%\go\src\github.com\_dev\`.
 
 
 ### Preparing the environment
@@ -92,7 +100,7 @@ The Go language was created with the goal of having **C** language performance b
 
 - Download the Protoc installation [link here](https://github.com/protocolbuffers/protobuf/releases), for `*.proto` files compilations and follow these steps (Example: https://github.com/google/protobuf/releases/download/v3.10.0/protoc-3.10.0-win64.zip):
   - Extract all to `C:\proto3`;
-  - Add the **PROTOCROOT** environment variable with the value `C:\proto3\bin`.
+  - Add the **PROTOROOT** environment variable with the value `C:\proto3\bin`.
 - Access the application directory from the terminal and execute:
   - Install the [GRPC](https://github.com/grpc/grpc-go):
     > go get -u google.golang.org/grpc
