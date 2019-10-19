@@ -1,3 +1,10 @@
+
+[TOCM]
+
+[TOC]
+
+---
+
 # GRPC GoLang Example
 
 Project created from the [Udemy](https://www.udemy.com/) course, [GRPC [Golang] Master Class: Build Modern API & Microservices](https://www.udemy.com/course/grpc-golang/).
