@@ -78,8 +78,6 @@ The Go language was created with the goal of having **C** language performance b
 
 &nbsp;&nbsp;&nbsp;&nbsp;In the Golang installation, the required environment variables are added. The variables and paths are as follows:
 
-**IMPORTANT:** *If you chose to clone the project in another directory structure, you will need to adjust `imports` to resolve the errors.*
-
 **GOROOT** - Golang installation path.
 - By default, the path is `C:\Go\bin`.
 
@@ -92,6 +90,8 @@ The Go language was created with the goal of having **C** language performance b
 ### Clone project
 
 &nbsp;&nbsp;&nbsp;&nbsp;To maintain project package imports, the project must be cloned into the `go` subdirectory. It will be `%USERPROFILE%\go\src\github.com\_dev\`.
+
+**IMPORTANT:** *If you chose to clone the project in another directory structure, you will need to adjust `imports` to resolve the errors.*
 
 
 ### Preparing the environment
