@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"log"
 	"net"
@@ -12,8 +13,18 @@ import (
 
 type server struct{}
 
+func (*server) Greet(ctx context.Context, req *greetpb.GreetRequest) (*greetpb.GreetResponse, error) {
+	fmt.Printf("Greet function was invoked with %v", req)
+	firstName := req.GetGreeting().GetFirstName()
+	result := "Hello " + firstName
+	resp := &greetpb.GreetResponse{
+		Result: result,
+	}
+	return resp, nil
+}
+
 func main() {
-	fmt.Println("Hello World!")
+	fmt.Println("Server starting...")
 
 	// Creating the port of GRPC server...
 	list, err := net.Listen("tcp", "0.0.0.0:50051")
@@ -26,6 +37,8 @@ func main() {
 
 	// Registring de GreetService in GRPC server...
 	greetpb.RegisterGreetServiceServer(s, &server{})
+
+	fmt.Println("Server running...")
 
 	// Binding the port to GRPC server...
 	if err := s.Serve(list); err != nil {
