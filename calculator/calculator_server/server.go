@@ -1,0 +1,48 @@
+package main
+
+import (
+	"context"
+	"fmt"
+	"log"
+	"net"
+
+	"github.com/_dev/grpc-go-example/calculator/calculatorpb"
+
+	"google.golang.org/grpc"
+)
+
+type server struct{}
+
+func (*server) Sum(ctx context.Context, req *calculatorpb.SumRequest) (*calculatorpb.SumResponse, error) {
+	fmt.Printf("Received Sum RPC: %v\n", req)
+	firstNumber := req.FirstNumber
+	secondNumber := req.SecondNumber
+	sum := firstNumber + secondNumber
+	res := &calculatorpb.SumResponse{
+		SumResult: sum,
+	}
+	return res, nil
+}
+
+func main() {
+	fmt.Println("Server starting...")
+
+	// Creating the port of GRPC server...
+	list, err := net.Listen("tcp", "0.0.0.0:50051")
+	if err != nil {
+		log.Fatalf("Failed to listen: %v", err)
+	}
+
+	// Creating GRPC server...
+	s := grpc.NewServer()
+
+	// Registring de CalculatorService in GRPC server...
+	calculatorpb.RegisterCalculatorServiceServer(s, &server{})
+
+	fmt.Println("Server running...")
+
+	// Binding the port to GRPC server...
+	if err := s.Serve(list); err != nil {
+		log.Fatalf("Failed to serve: %v", err)
+	}
+}
