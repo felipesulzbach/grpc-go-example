@@ -10,3 +10,17 @@
 
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
+
+bin/
+Thumbs.db
+Desktop.ini
+._*
+*.pydevproject
+.project
+.metadata
+*.tmp
+*.bak
+*.swp
+*~.nib
+.settings
+*.log
