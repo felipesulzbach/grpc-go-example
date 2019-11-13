@@ -52,7 +52,7 @@ func (*server) GreetManyTimes(req *greetpb.GreetManyTimesRequest, stream greetpb
 }
 
 func main() {
-  log.Println("SERVER - starting...")
+  log.Println("SERVER - Starting...")
 
   // Creating the port of GRPC server...
   list, err := net.Listen("tcp", "0.0.0.0:50051")
@@ -66,7 +66,7 @@ func main() {
   // Registring de GreetService in GRPC server...
   greetpb.RegisterGreetServiceServer(s, &server{})
 
-  log.Println("SERVER - running...")
+  log.Println("SERVER - Running...")
 
   // Binding the port to GRPC server...
   if err := s.Serve(list); err != nil {
