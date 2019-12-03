@@ -36,6 +36,10 @@ func main() {
   log.Println(">>")
   doClientStreaming(c)
   log.Println("<<")
+
+  log.Println(">>")
+  doBidirectionalStreaming(c)
+  log.Println("<<")
 }
 
 // Unary API
@@ -139,4 +143,26 @@ func doClientStreaming(c greetpb.GreetServiceClient) {
   log.Fatalf("LongGreet Response: %v", resp)
 
   log.Println("CLIENT STREAMING - Completed.")
+}
+
+// Bidirectional Streaming API
+func doBidirectionalStreaming(c greetpb.GreetServiceClient) {
+  log.Println("BIDIRECTIONAL STREAMING - Starting...")
+
+  // We create a stream by invoking the client.
+  stream, err := c.GreetEveryone(context.Background())
+  if err != nil {
+    log.Fatalf("Error while creating stream: %v", err)
+    return
+  }
+
+  waitc := make(chan struct{}) // Wait for the channel to close.
+  // We send a bunch of messages to the client (go routine).
+
+  // We receive a bunch of messages from the client (go routine).
+
+  // Block until everything is done.
+  <-waitc
+
+  log.Println("BIDIRECTIONAL STREAMING - Completed.")
 }

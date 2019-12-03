@@ -81,6 +81,35 @@ func (*server) LongGreet(stream greetpb.GreetService_LongGreetServer) error {
   }
 }
 
+func (*server) GreetEveryone(stream greetpb.GreetService_GreetEveryoneServer) error {
+  log.Println("GreetEveryone - function was invoked with streaming.")
+
+  var result bytes.Buffer
+  for { // Runs in a loop to consume the entire stream.
+    req, err := stream.Recv()
+    if err == io.EOF {
+      return nil
+    }
+    if err != nil {
+      log.Fatalf("Error while reading stream: %v", err)
+      return err
+    }
+
+    firstName := req.GetGreeting().GetFirstName()
+    result.WriteString("Hello ")
+    result.WriteString(firstName)
+    result.WriteString("! ")
+
+    err = stream.Send(&greetpb.GreetEveryoneResponse{
+      Result: result.String(),
+    })
+    if err != nil {
+      log.Fatalf("Error while sending stream: %v", err)
+      return err
+    }
+  }
+}
+
 func main() {
   log.Println("SERVER - Starting...")
 
@@ -98,7 +127,7 @@ func main() {
 
   log.Println("SERVER - Running...")
 
-  // Binding the port to GRPC server...
+  // Bidirectional the port to GRPC server...
   if err := s.Serve(list); err != nil {
     log.Fatalf("Failed to serve: %v", err)
   }
