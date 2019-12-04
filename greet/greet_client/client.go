@@ -13,6 +13,7 @@ import (
 
 func main() {
   log.Println("Client running...")
+
   cc, err := grpc.Dial("localhost:50051", grpc.WithInsecure())
   if err != nil {
     log.Fatalf("Could not connect: %v", err)
@@ -40,6 +41,8 @@ func main() {
   log.Println(">>")
   doBidirectionalStreaming(c)
   log.Println("<<")
+
+  log.Println("Client stoped.")
 }
 
 // Unary API
@@ -85,6 +88,7 @@ func doServerStreaming(c greetpb.GreetServiceClient) {
     }
     if err != nil {
       log.Fatalf("Error while reading stream: %v", err)
+      break
     }
     log.Printf("GreetManyTimes Response: %v", msg.GetResult())
   }
@@ -140,7 +144,7 @@ func doClientStreaming(c greetpb.GreetServiceClient) {
   if err != nil {
     log.Fatalf("Error while calling LongGreet RPC: %v", err)
   }
-  log.Fatalf("LongGreet Response: %v", resp)
+  log.Printf("LongGreet Response: %v", resp)
 
   log.Println("CLIENT STREAMING - Completed.")
 }
@@ -156,12 +160,68 @@ func doBidirectionalStreaming(c greetpb.GreetServiceClient) {
     return
   }
 
+  requests := []*greetpb.GreetEveryoneRequest{
+    &greetpb.GreetEveryoneRequest{
+      Greeting: &greetpb.Greeting{
+        FirstName: "Felipe 01",
+      },
+    },
+    &greetpb.GreetEveryoneRequest{
+      Greeting: &greetpb.Greeting{
+        FirstName: "Felipe 02",
+      },
+    },
+    &greetpb.GreetEveryoneRequest{
+      Greeting: &greetpb.Greeting{
+        FirstName: "Felipe 03",
+      },
+    },
+    &greetpb.GreetEveryoneRequest{
+      Greeting: &greetpb.Greeting{
+        FirstName: "Felipe 04",
+      },
+    },
+    &greetpb.GreetEveryoneRequest{
+      Greeting: &greetpb.Greeting{
+        FirstName: "Felipe 05",
+      },
+    },
+  }
+
   waitc := make(chan struct{}) // Wait for the channel to close.
+
   // We send a bunch of messages to the client (go routine).
+  go func() {
+    // function to send a bunch of messages
+    for _, req := range requests {
+      log.Printf("GreetEveryone sent: %v...\n", req)
+      stream.Send(req)
+      time.Sleep(1000 * time.Millisecond)
+    }
+    stream.CloseSend()
+  }()
 
   // We receive a bunch of messages from the client (go routine).
+  go func() {
+    // function to receive a banch of messages
+    for {
+      res, err := stream.Recv()
+      if err == io.EOF {
+        break // It has reached the end of the stream.
+      }
+      if err != nil {
+        log.Fatalf("Error while receiving stream: %v", err)
+        break // It has reached the end of the stream.
+      }
+      log.Printf("GreetEveryone received: %v...\n", res)
+    }
+    close(waitc)
+  }()
 
   // Block until everything is done.
+  go func() {
+  }()
+
   <-waitc
 
   log.Println("BIDIRECTIONAL STREAMING - Completed.")
