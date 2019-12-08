@@ -5,6 +5,7 @@ import (
   "fmt"
   "io"
   "log"
+  "time"
 
   "github.com/grpc-go-course/calculator/calculatorpb"
 
@@ -35,6 +36,10 @@ func main() {
 
   log.Println(">>")
   doClientStreaming(c)
+  log.Println("<<")
+
+  log.Println(">>")
+  doBidirectionalStreaming(c)
   log.Println("<<")
 }
 
@@ -101,4 +106,49 @@ func doClientStreaming(c calculatorpb.CalculatorServiceClient) {
   log.Printf("Response from Average: %v", res.GetAverage())
 
   log.Println("CLIENT STREAMING - Completed.")
+}
+
+func doBidirectionalStreaming(c calculatorpb.CalculatorServiceClient) {
+  log.Println("BIDIRECTIONAL STREAMING - Starting...")
+
+  stream, err := c.FindMaximum(context.Background())
+  if err != nil {
+    log.Fatalf("Error while open stream: %v", err)
+  }
+
+  waitc := make(chan struct{})
+
+  // send go routine
+  go func() {
+    numbers := []int32{4, 7, 2, 19, 4, 6, 32}
+    for _, number := range numbers {
+      log.Printf("Sending number: %v\n", number)
+      stream.Send(&calculatorpb.FindMaximumRequest{
+        Number: number,
+      })
+      time.Sleep(1000 * time.Millisecond)
+    }
+    stream.CloseSend()
+  }()
+
+  // receive go routing
+  go func() {
+    for {
+      res, err := stream.Recv()
+      if err == io.EOF {
+        break // It has reached the end of the stream.
+      }
+      if err != nil {
+        log.Fatalf("Error while receiving stream: %v", err)
+        break // It has reached the end of the stream.
+      }
+      maximum := res.GetMaximum()
+      log.Printf("BidirectionalStreaming received: %v...\n", maximum)
+    }
+    close(waitc)
+  }()
+
+  <-waitc
+
+  log.Println("BIDIRECTIONAL STREAMING - Completed.")
 }
