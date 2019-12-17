@@ -10,6 +10,8 @@ import (
   "github.com/grpc-go-course/calculator/calculatorpb"
 
   "google.golang.org/grpc"
+  "google.golang.org/grpc/codes"
+  "google.golang.org/grpc/status"
 )
 
 func main() {
@@ -40,6 +42,10 @@ func main() {
 
   log.Println(">>")
   doBidirectionalStreaming(c)
+  log.Println("<<")
+
+  log.Println(">>")
+  doSquareRoot(c)
   log.Println("<<")
 }
 
@@ -151,4 +157,34 @@ func doBidirectionalStreaming(c calculatorpb.CalculatorServiceClient) {
   <-waitc
 
   log.Println("BIDIRECTIONAL STREAMING - Completed.")
+}
+
+func doSquareRoot(c calculatorpb.CalculatorServiceClient) {
+  log.Println("SQUAREROOT STREAMING - Starting...")
+
+  // correct call
+  doErrorCall(c, 10)
+
+  // error call
+  doErrorCall(c, -2)
+
+  log.Println("SQUAREROOT STREAMING - Completed.")
+}
+
+func doErrorCall(c calculatorpb.CalculatorServiceClient, n int32) {
+  res, err := c.SquareRoot(context.Background(), &calculatorpb.SquareRootRequest{Number: n})
+  if err != nil {
+    err, ok := status.FromError(err)
+    if ok {
+      log.Printf("Error message from server: %v - %v.\n", err.Code(), err.Message())
+      if err.Code() == codes.InvalidArgument {
+        log.Println("We probaly sent a negative number!")
+        return
+      }
+    } else {
+      log.Fatalf("Error while calling SquareRoot: %v", err)
+      return
+    }
+  }
+  log.Printf("Result of square root of %v: %v\n", n, res.GetNumberRoot())
 }
